@@ -33,7 +33,8 @@ app.use(limiter)
 
 
 app.use(cors({
-	origin:["https://localhost:5173","https://encryptsharee.netlify.app"],
+	origin:["http://localhost:5173","https://encryptsharee.netlify.app"],
+  credentials:true,
   exposedHeaders: ['Content-Disposition']
 }));
 app.use(fileUpload());
