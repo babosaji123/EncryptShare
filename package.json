@@ -1,0 +1,30 @@
+{
+  "name": "secured-file-send",
+  "version": "1.0.0",
+  "description": "Secure File Sharing App is a comprehensive solution for secure file exchange, developed using the MERN (MongoDB, Express.js, React, Node.js) stack. This application enables users to share files with end-users with a high level of privacy and security. Featuring end-to-end encryption, password protection, input sanitization, brute force attack protection, protection against NoSQL injections, XSS attacks, and many other security measures, it stands as a modern web application designed to meet the highest standards of data protection.",
+  "license": "ISC",
+  "author": "Kuzma02",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.2",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.3",
+    "express-nosql-sanitizer": "^1.1.1",
+    "express-rate-limit": "^7.1.5",
+    "express-xss-sanitizer": "^1.1.8",
+    "mongoose": "^8.1.0",
+    "node-mailjet": "^6.0.5",
+    "nodemailer": "^6.9.8",
+    "sib-api-v3-sdk": "^8.5.0",
+    "sql-injection": "^0.0.7",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {}
+}
