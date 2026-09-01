@@ -147,7 +147,7 @@ const UploadForm = ({ progress }) => {
       formData.append("password", hashedPassword);
 
 
-      await axios.post("https://encryptshare.onrender.com", formData, {
+     const res= await axios.post("https://encryptshare.onrender.com", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
