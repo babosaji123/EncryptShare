@@ -29,7 +29,7 @@ const FileDownload = () => {
       const hashedPassword = await hashPassword(password);
 
       const response = await axios.get(
-  `https://encryptshare-backend.onrender.com/download/${fileId}`,
+  `https://encryptshare.onrender.com/download/${fileId}`,
   {
     responseType: "blob",
     headers: {
