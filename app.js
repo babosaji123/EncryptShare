@@ -97,15 +97,20 @@ app.post("/", express.json(), async (req, res) => {
 
 app.get("/download/:id", async (req, res) => {
   try {
+    // Regex se find karein taaki localhost ya render domain ka issue na aaye
     const file = await File.findOne({
-      downloadLink: `https://encryptshare.onrender.com/download/${req.params.id}`,
+      downloadLink: { $regex: req.params.id },
     });
-
 
     const password = req.headers['password'];
 
     if (!file || !file.path || file.password !== password) {
-      return res.status(403).send({ msg: "Access denied" });
+      return res.status(403).send({ msg: "Access denied or wrong password" });
+    }
+
+    // Check karein file disk par exist karti hai ya nahi (Render restart issue)
+    if (!fs.existsSync(file.path)) {
+      return res.status(404).send({ msg: "File not found on server storage (expired or deleted)" });
     }
 
     const filename = file.originalName || "downloaded_file";
@@ -115,14 +120,10 @@ app.get("/download/:id", async (req, res) => {
     );
     res.download(file.path, filename, async (err) => {
       if (!err) {
-
         await File.deleteOne({ _id: file._id });
-
         fs.unlink(file.path, (unlinkErr) => {
-          if (unlinkErr) {
-            console.error("Greška prilikom brisanja fajla:", unlinkErr);
-          } else {
-            console.log("Fajl uspešno obrisan nakon preuzimanja.");
+          if (!unlinkErr) {
+            console.log("File successfully deleted after download.");
           }
         });
       }
