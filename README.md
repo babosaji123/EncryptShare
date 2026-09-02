@@ -22,7 +22,7 @@ Secure File Sharing App is a comprehensive solution for secure file exchange, de
 
 1. Open your terminal of choice and clone the repository:
 ```
-git clone https://github.com/Kuzma02/Secured-File-Share
+git clone https://github.com/babosaji123/EncryptShare
 ```
 
 2. Enter your environment variables in .env on the server
